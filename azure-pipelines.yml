@@ -1,0 +1,32 @@
+
+trigger:
+- master
+jobs:
+- job: 'cinema_booking'
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  strategy:
+    matrix:
+      Python36:
+        python.version: '3.6'
+      Python37:
+        python.version: '3.7'
+    maxParallel: 2
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: 'Install dependencies'
+  - script: |
+      pip install pytest-django
+      cd cinema_booking
+      pytest --junitxml=../../reports/cinema_booking.xml
+    displayName: 'Run tests'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: 'reports/cinema_booking.xml'
+      testRunTitle: '$(Agent.OS) - $(Build.DefinitionName) - Python $(python.version)'
+    condition: succeededOrFailed()
