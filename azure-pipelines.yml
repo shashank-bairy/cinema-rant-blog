@@ -42,6 +42,12 @@ steps:
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
 
+- script: |     
+   pip install pytest-django      
+   cd cinema_booking    
+   pytest --junitxml=../../reports/cinema_booking.xml    
+  displayName: 'Run tests'
+
 - script: |
     pushd '$(projectRoot)'
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
