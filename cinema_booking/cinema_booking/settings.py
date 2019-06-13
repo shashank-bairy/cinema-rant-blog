@@ -122,6 +122,7 @@ MEDIA_URL = '/media/'
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 # Ckeditor
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
