@@ -1,5 +1,6 @@
 cinema_booking/media/profile_pics
 cinema_booking/media/uploads
+cinema_booking/media/thumbnail
 *.pyc
 *.pyo
 *.mo

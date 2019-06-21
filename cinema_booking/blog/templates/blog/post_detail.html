@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<article class="media content-section pt-5">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="go-back" href="{% url 'blog:blog-home' %}"> &#8617; Back</a>
+            <br><br>
+            <h2 class="article-detail-title">{{ post.title }}</h2>
+            <p>
+                By <span class="mr-2 article-author"><b>{{ post.author }}</b> </span>
+                <span>Published on {{ post.updated_at|date:'Y-m-d H:i' }}</span>
+            </p>
+            <p>{{ post.content|safe }}<p>
+        </div>
+    </div>
+</article>
+<h4 class="comment-heading pt-5"><b><u>Comments</u></b></h4>
+<div class="fb-comments" data-href="http://127.0.0.1:8000/post/{{ post.slug }}/" data-width="" data-numposts="5"></div>
+<!-- <h4 class="comment-heading pt-5"><b><u>Comments</u></b></h4>
+<ul>
+    {% for comment in comment_list %}
+    <li class="content-section pt-3">
+        <span class="mr-2 comment-author"><b>{{ comment.author }}</b> </span>
+        <span class="comment-create-date"> on {{ comment.created_at|date:'Y-m-d H:i' }}</span>
+        <p class="comment-content">{{ comment.content }}</p>
+    </li>
+    {% endfor %}
+</ul> -->
+{% endblock content %}

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-red nav-box-shadow">
+    <a class="navbar-brand navbar-brand-font pl-5" href="{% url 'blog:blog-home' %}">BLOG!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item pl-5">
+                <a class="nav-link nav-item-font" href="{% url 'blog:blog-home' %}">Home<span
+                        class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item pl-5">
+                <a class="nav-link nav-item-font" href="{% url 'blog:post-category' 'movies' %}">Movies<span
+                        class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item pl-5">
+                <a class="nav-link nav-item-font" href="{% url 'blog:post-category' 'tv-shows' %}">TV Shows</a>
+            </li>
+        </ul>
+    </div>
+</nav>
