@@ -211,3 +211,7 @@ a.disable-hyperlink:visited {
   font-weight: 700;
   cursor: pointer;
 }
+
+.share-buttons {
+  display: flex !important;
+}

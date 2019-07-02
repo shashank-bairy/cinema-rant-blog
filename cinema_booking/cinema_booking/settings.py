@@ -126,6 +126,9 @@ CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'templates'),)
+
 # username - superuser
 # email - superuser@superuser.com
 # password - 12345678

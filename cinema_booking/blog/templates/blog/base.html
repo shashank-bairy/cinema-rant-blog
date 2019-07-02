@@ -7,17 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta property="fb:app_id" content="{2274370389492856}" />
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700,900i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>
+    <script src="https://kit.fontawesome.com/c88c047c71.js"></script>
+    <!-- <div id="fb-root"></div> -->
+    <!-- <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script> -->
     <title>BLOG!</title>
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=2274370389492856&autoLogAppEvents=1"></script>
     <div class="container-fluid pd-reset">
         <header class="site-header">
             {% block navbar %}
@@ -33,7 +37,45 @@
             </div>
     </div>
     </main>
-    <footer class="footer">© 2019 Copyright</footer>
+    <footer class="row page-footer font-small teal pt-4">
+        <div class="container-fluid text-center text-md-left bg-footer color-white pt-4">
+            <div class="row">
+                <div class="col-sm-12 footer-item">
+                    <a class="footer-item-link disable-hyperlink">BLOG</a>
+                    <a class="footer-item-link disable-hyperlink">SLIDES</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="connect__icon-box">
+                        <a class="connect__icons disable-hyperlink px-2" href="#" target="_blank">
+                            <i class="fab fa-google-plus-g connect__icons-google"></i>
+                        </a>
+                        <a class="connect__icons disable-hyperlink px-2" href="#" target="_blank">
+                            <i class="fab fa-twitter connect__icons-twitter"></i>
+                        </a>
+                        <a class="connect__icons disable-hyperlink px-2" href="#" target="_blank">
+                            <i class="fab fa-facebook-square connect__icons-facebook"></i>
+                        </a>
+                        <a class="connect__icons disable-hyperlink px-2" href="#" target="_blank">
+                            <i class="fab fa-instagram connect__icons-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer-copyright py-3 footer-copyright-block">
+                        <p class="footer-coyright-text">
+                            © 2019 Copyright:
+                            <a class="disable-hyperlink footer-copyright-link"
+                                href="https://mdbootstrap.com/education/bootstrap/">&nbsp;CinemaRant.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -45,6 +87,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script id="dsq-count-scr" src="//cinema-booking.disqus.com/count.js" async></script>
 </body>
 
 </html>

@@ -7,8 +7,7 @@
             <br />
             <p>
                 By
-                <span class="mr-2 article-author"><b>{{ post.author }}</b>
-                </span>
+                <a href="{% url 'users:user-profile-detail' post.author.userprofile.slug %}" class="mr-2 article-author"><b>{{ post.author.username }}</b></a>
                 <span>Published on {{ post.created_at|date:"D d M Y"  }}</span>
             </p>
         </div>

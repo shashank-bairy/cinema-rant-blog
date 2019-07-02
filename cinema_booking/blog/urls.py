@@ -12,7 +12,6 @@ urlpatterns = [
     path('category/<slug:slug>',
          views.PostCategoryListView.as_view(),
          name='post-category')
-    #   path('blog/<int:pk>/', views.BlogDetailView.as_view() , name='blog-detail')
 ]
 
 if settings.DEBUG:

@@ -3,11 +3,18 @@ from django.contrib.auth.models import User
 from datetime import date
 from PIL import Image
 from django.dispatch import receiver
+from django.urls import reverse
+from django.utils.text import slugify
 import os
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=50,
+                            unique=True,
+                            null=True,
+                            blank=True,
+                            editable=False)
     # profile image of user
     image = models.ImageField(default='default.jpeg', upload_to='profile_pics')
     # date of birth of user
@@ -16,13 +23,17 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+    def get_absolute_url(self):
+        return reverse('user-profile-detail', kwargs={'slug': self.slug})
+
     @property
     def full_name(self):
         return '%s %s' % (self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.user.username)
         super().save(*args, **kwargs)
-
         # Resize the image to size 300 x 300 before saving
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
@@ -37,9 +48,9 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
     Deletes image from filesystem
     when corresponding `UserProfile` object is deleted.
     """
+    # and 'default.jpeg' not in old_image.path
     if instance.image:
-        if os.path.isfile(
-                instance.image.path) and 'default.jpeg' not in old_image.path:
+        if os.path.isfile(instance.image.path) and 'default.jpeg' not in instance.image.path:
             os.remove(instance.image.path)
 
 

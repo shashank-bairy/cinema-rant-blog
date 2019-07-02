@@ -3,27 +3,66 @@
 <article class="media content-section pt-5">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="go-back" href="{% url 'blog:blog-home' %}"> &#8617; Back</a>
+            <!-- <a class="go-back" href="{% url 'blog:blog-home' %}"> &#8617; Back</a> -->
+            <a class="go-back" href="#" onclick="location.href = document.referrer; return false;">&#8617; Back</a>
+            <!-- <input type=button value="Previous Page" onClick="javascript:history.go(-1);"> -->
             <br><br>
             <h2 class="article-detail-title">{{ post.title }}</h2>
-            <p>
-                By <span class="mr-2 article-author"><b>{{ post.author }}</b> </span>
-                <span>Published on {{ post.updated_at|date:'Y-m-d H:i' }}</span>
-            </p>
+            <div class="share-buttons row" style="display: flex;">
+                <div class="col-md-12">
+                    By <a href="{% url 'users:user-profile-detail' post.author.userprofile.slug %}" class="mr-2 article-author"><b>{{ post.author.username }}</b></a>
+                    <span>Published on {{ post.updated_at|date:'Y-m-d H:i' }}</span>
+                </div>
+            </div>
             <p>{{ post.content|safe }}<p>
         </div>
     </div>
 </article>
+<h4>Share on social media</h4>
+<div class="row share-buttons" style="display: flex;">
+    <div class="share-twitter mr-3" style="margin-top: 2px;">
+        <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/">>Tweet</a>
+    </div>
+    <div class="share-facebook">
+        <div class="fb-share-button" data-href="{{ request.build_absolute_uri }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fpost%2Fgame-of-thrones%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+    </div>
+</div>
 <h4 class="comment-heading pt-5"><b><u>Comments</u></b></h4>
-<div class="fb-comments" data-href="http://127.0.0.1:8000/post/{{ post.slug }}/" data-width="" data-numposts="5"></div>
-<!-- <h4 class="comment-heading pt-5"><b><u>Comments</u></b></h4>
-<ul>
-    {% for comment in comment_list %}
-    <li class="content-section pt-3">
-        <span class="mr-2 comment-author"><b>{{ comment.author }}</b> </span>
-        <span class="comment-create-date"> on {{ comment.created_at|date:'Y-m-d H:i' }}</span>
-        <p class="comment-content">{{ comment.content }}</p>
-    </li>
-    {% endfor %}
-</ul> -->
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = document.URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = document.getElementById('post-slug').textContent; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://cinema-booking.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+        powered by
+        Disqus.</a>
+</noscript>
+<script>
+// setting up twitter for website
+window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+    
+    return t;
+}(document, "script", "twitter-wjs"));
+</script>
 {% endblock content %}
