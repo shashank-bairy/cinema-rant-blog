@@ -11,7 +11,8 @@ urlpatterns = [
          name='post-detail'),
     path('category/<slug:slug>',
          views.PostCategoryListView.as_view(),
-         name='post-category')
+         name='post-category'),
+    path('search/', views.PostSearchView.as_view(), name='search')
 ]
 
 if settings.DEBUG:
