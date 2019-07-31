@@ -211,3 +211,14 @@ a.disable-hyperlink:visited {
   font-weight: 700;
   cursor: pointer;
 }
+
+@media (max-width: 575.98px) {
+  .form-inline {
+    display: inline-block !important;
+  }
+}
+
+.post-details {
+  display: flex;
+  flex-direction: column;
+}

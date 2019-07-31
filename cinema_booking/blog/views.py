@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Category, Post, Comment
 from django.views.generic import (ListView, DetailView)
 from django.http import HttpResponse, Http404
+from django.shortcuts import get_object_or_404, get_list_or_404
 
 # def search_posts(request):
 #     if request.method == 'GET':
@@ -13,6 +14,7 @@ from django.http import HttpResponse, Http404
 #         return render(request, 'blog/post_search.html', {"posts": status })
 #     else:
 #         return render(request, 'blog/post_search.html',{})
+
 
 class PostSearchView(ListView):
     model = Post

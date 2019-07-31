@@ -5,11 +5,12 @@ from PIL import Image
 from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.text import slugify
+from django.db.models.signals import post_save
 import os
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     slug = models.SlugField(max_length=50,
                             unique=True,
                             null=True,
@@ -18,7 +19,7 @@ class UserProfile(models.Model):
     # profile image of user
     image = models.ImageField(default='default.jpeg', upload_to='profile_pics')
     # date of birth of user
-    dob = models.DateField(blank=False, null=False)
+    dob = models.DateField(blank=False, null=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -42,6 +43,17 @@ class UserProfile(models.Model):
             img.save(self.image.path)
 
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()
+
+
 @receiver(models.signals.post_delete, sender=UserProfile)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
     """
@@ -50,7 +62,8 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
     """
     # and 'default.jpeg' not in old_image.path
     if instance.image:
-        if os.path.isfile(instance.image.path) and 'default.jpeg' not in instance.image.path:
+        if os.path.isfile(instance.image.path
+                          ) and 'default.jpeg' not in instance.image.path:
             os.remove(instance.image.path)
 
 

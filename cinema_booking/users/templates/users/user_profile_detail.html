@@ -2,30 +2,30 @@
 {% block content %}
 <div class="profile-block">
     <div class="row pt-5">
-        <div class="col-md-3"></div>
-        <div class="col-md-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
             <h1 class="user-name">{{user_profile.full_name}}</h1>
             <div class="user-details">
                 <p>Email: {{ user_profile.user.email }}</p>
             </div>
         </div>
         <div class="col-md-2">
-            <img class="profile-image" style="width: 128px;height:128px;border-radius: 50%;" src="{{ user_profile.image.url }}" alt="Profile photo">
+            <img class="profile-image" style="width: 128px;height:128px;border-radius: 50%;"
+                src="{{ user_profile.image.url }}" alt="Profile photo">
         </div>
     </div>
     <div class="row pt-5">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h3>Latest Posts!</h3>
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <h4><b>POSTS</b></h4>
             {% for post in posts %}
             <article class="media content-section pt-2">
                 <div class="media-body">
                     <div class="article-metadata">
-                        <a href="{% url 'blog:post-detail' post.slug %}" class="article-title">{{ forloop.counter }}.
-                            {{ post.title }}</a>
+                        <a href="{% url 'blog:post-detail' post.slug %}" class="article-title">{{ post.title }}</a>
                         <br />
                         <p>
-                            <span>Published on {{ post.created_at|date:"D d M Y"  }}</span>
+                            <span>Published on {{ post.created_at|date:"d M Y"  }}</span>
                         </p>
                     </div>
                 </div>

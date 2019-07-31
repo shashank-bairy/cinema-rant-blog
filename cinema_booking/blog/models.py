@@ -46,7 +46,7 @@ class Post(models.Model):
                             null=True,
                             blank=True,
                             editable=False)
-    thumbnail_img = models.ImageField(default='default.jpg',
+    thumbnail_img = models.ImageField(default='default.jpeg',
                                       upload_to='thumbnail/')
     category = models.ForeignKey(Category,
                                  default=DEFAULT_CATEGORY_ID,

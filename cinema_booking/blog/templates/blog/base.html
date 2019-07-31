@@ -21,7 +21,8 @@
 
 <body>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=2274370389492856&autoLogAppEvents=1"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=2274370389492856&autoLogAppEvents=1"></script>
     <div class="container-fluid pd-reset">
         <header class="site-header">
             {% block navbar %}
@@ -30,7 +31,8 @@
         </header>
         <main>
             <div class="row content">
-                <div class="col-md-12 bg-white px-5">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 px-5 mt-3">
                     {% block content %}{% endblock %}
                     <div class="pt-5"></div>
                 </div>
