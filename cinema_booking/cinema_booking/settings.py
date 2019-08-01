@@ -22,12 +22,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+a%+6$rp@pwc*cc#jyp(fhp&1$9l(n122%uw=9gpaaaiu4c+o0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
+DEBUG = True
 ALLOWED_HOSTS = []
 
-# Application definition
+# for 404 page to work
+# DEBUG = False
+# ALLOWED_HOSTS = ['localhost']
 
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
@@ -51,7 +55,7 @@ ROOT_URLCONF = 'cinema_booking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,8 +75,14 @@ WSGI_APPLICATION = 'cinema_booking.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'cinema_booking',
+        'USER': 'superuser',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -131,4 +141,10 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'templates'),)
 
 # username - superuser
 # email - superuser@superuser.com
-# password - 12345678
+# password - super123
+
+# sudo service postgresql start
+# sudo service postgresql stop
+
+# python manage.py runserver --insecure
+# whitenoise to render static content

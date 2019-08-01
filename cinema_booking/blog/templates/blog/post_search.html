@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %}
-{% block content %} 
+{% block content %}
+<h3 class="mt-2 text-center">Search Results</h3>
 {% for post in posts %}
-<article class="media content-section pt-5">
+<article class="media content-section pt-2">
     <div class="media-body">
         <div class="article-metadata">
             <a href="{% url 'blog:post-detail' post.slug %}" class="article-title">{{ forloop.counter }}.
@@ -9,7 +10,8 @@
             <br />
             <p>
                 By
-                <a href="{% url 'users:user-profile-detail' post.author.userprofile.slug %}" class="mr-2 article-author"><b>{{ post.author.username }}</b></a>
+                <a href="{% url 'users:user-profile-detail' post.author.userprofile.slug %}"
+                    class="mr-2 article-author"><b>{{ post.author.username }}</b></a>
                 <span>Published on {{ post.created_at|date:"D d M Y"  }}</span>
             </p>
         </div>

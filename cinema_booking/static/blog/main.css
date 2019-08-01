@@ -212,6 +212,13 @@ a.disable-hyperlink:visited {
   cursor: pointer;
 }
 
-.share-buttons {
-  display: flex !important;
+@media (max-width: 575.98px) {
+  .form-inline {
+    display: inline-block !important;
+  }
+}
+
+.post-details {
+  display: flex;
+  flex-direction: column;
 }
