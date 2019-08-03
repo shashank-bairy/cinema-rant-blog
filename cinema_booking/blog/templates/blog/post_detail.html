@@ -3,9 +3,7 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <!-- <a class="go-back" href="{% url 'blog:blog-home' %}"> &#8617; Back</a> -->
             <a class="go-back" href="#" onclick="location.href = document.referrer; return false;">&#8617; Back</a>
-            <!-- <input type=button value="Previous Page" onClick="javascript:history.go(-1);"> -->
             <br><br>
             <h2 class="article-detail-title">{{ post.title }}</h2>
             <div class="share-buttons post-details">
@@ -24,10 +22,11 @@
 <h4>Share on social media</h4>
 <div class="row share-buttons" style="display: flex;">
     <div class="share-twitter mr-3" style="margin-top: 2px;">
-        <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/">>Tweet</a>
+        <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/">Tweet</a>
     </div>
     <div class="fb-share-button" data-href="http://localhost:8000/post/{{ post.slug }}/" data-layout="button"
-        data-size="large"><a target="_blank"
+        data-size="large">
+        <a target="_blank"
             href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fpost%2F{{ post.slug }}%2F&amp;src=sdkpreparse"
             class="fb-xfbml-parse-ignore">Share</a>
     </div>
