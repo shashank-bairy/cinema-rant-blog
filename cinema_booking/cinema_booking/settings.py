@@ -75,14 +75,14 @@ WSGI_APPLICATION = 'cinema_booking.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cinema_booking',
-        'USER': 'superuser',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'cinema_booking',
+        # 'USER': 'superuser',
+        # 'PASSWORD': '12345678',
+        # 'HOST': 'localhost',
+        # 'PORT': '',
     }
 }
 
@@ -146,5 +146,4 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'templates'),)
 # sudo service postgresql start
 # sudo service postgresql stop
 
-# python manage.py runserver --insecure
 # whitenoise to render static content
