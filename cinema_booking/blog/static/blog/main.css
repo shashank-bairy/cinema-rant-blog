@@ -13,24 +13,6 @@ body {
   padding-right: 0px;
 }
 
-/* .navbar-brand-font {
-  font-size: 28px;
-  font-style: italic;
-  font-weight: 700;
-  color: white !important;
-}
-
-.nav-item-font {
-  text-decoration: none !important;
-  font-weight: 700;
-  font-size: 17px !important;
-  color: white !important;
-}
-
-.bg-red {
-  background-color: #fd0054;
-} */
-
 .bg-navbar-red {
   background-color: #fd0054;
 }

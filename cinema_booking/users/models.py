@@ -8,9 +8,11 @@ from django.utils.text import slugify
 from django.db.models.signals import post_save
 import os
 
-
+# User Profile Model
 class UserProfile(models.Model):
+    # user to which the profile belongs
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    # unique identifier used to naviagte via URL
     slug = models.SlugField(max_length=50,
                             unique=True,
                             null=True,
@@ -34,7 +36,9 @@ class UserProfile(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.user.username)
+        
         super().save(*args, **kwargs)
+
         # Resize the image to size 300 x 300 before saving
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
@@ -42,18 +46,18 @@ class UserProfile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-
+# Create user profile on creating a new user and link to it
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
 
-
+# Save user profile on creating user
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
-
+# Delete the profile image on deleting the UserProfile object
 @receiver(models.signals.post_delete, sender=UserProfile)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
     """
@@ -66,7 +70,7 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
                           ) and 'default.jpeg' not in instance.image.path:
             os.remove(instance.image.path)
 
-
+# Delete the old profile image on changing the profile image
 @receiver(models.signals.pre_save, sender=UserProfile)
 def auto_delete_file_on_change(sender, instance, **kwargs):
     """

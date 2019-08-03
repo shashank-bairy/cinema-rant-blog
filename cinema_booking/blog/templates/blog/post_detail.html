@@ -26,11 +26,10 @@
     <div class="share-twitter mr-3" style="margin-top: 2px;">
         <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/">>Tweet</a>
     </div>
-    <div class="share-facebook">
-        <div class="fb-share-button" data-href="{{ request.build_absolute_uri }}" data-layout="button"
-            data-size="large"><a target="_blank"
-                href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fpost%2Fgame-of-thrones%2F&amp;src=sdkpreparse"
-                class="fb-xfbml-parse-ignore">Share</a></div>
+    <div class="fb-share-button" data-href="http://localhost:8000/post/{{ post.slug }}/" data-layout="button"
+        data-size="large"><a target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fpost%2F{{ post.slug }}%2F&amp;src=sdkpreparse"
+            class="fb-xfbml-parse-ignore">Share</a>
     </div>
 </div>
 <h4 class="comment-heading pt-5"><b><u>Comments</u></b></h4>
@@ -46,14 +45,8 @@
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
-</script>
-<noscript>
-    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
-        powered by
-        Disqus.</a>
-</noscript>
-<script>
-    // setting up twitter for website
+
+    // setting up twitter share button
     window.twttr = (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
             t = window.twttr || {};
