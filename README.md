@@ -39,3 +39,7 @@ To run the app
 ```bash
 python manage.py runserver
 ```
+
+## Screenshot
+
+![Blog post](./screenshots/after-life-blog.png "Blog post")
